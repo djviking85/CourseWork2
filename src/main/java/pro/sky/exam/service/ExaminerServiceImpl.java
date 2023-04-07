@@ -2,7 +2,7 @@ package pro.sky.exam.service;
 
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 
-public class ExaminerServiceImpl implements QuestionService {
-}
+//public class ExaminerServiceImpl implements QuestionService {
+//}
