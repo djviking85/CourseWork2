@@ -19,7 +19,7 @@ public class JavaQuestionServiceImpl implements QuestionService {
 //
 //    public JavaQuestionServiceImpl(Random random) {
 //        this.random = random;
-    }
+//    }
 //    public static List<Question> questions = new ArrayList<>();
 //static {
 //    Question q1 = new Question("Как вас зовут?", " Меня зовут Саша.");
