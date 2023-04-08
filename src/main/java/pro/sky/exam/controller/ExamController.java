@@ -10,8 +10,9 @@ import pro.sky.exam.service.QuestionService;
 
 import java.util.Collection;
 
-@Service
-@RestController("/exam/get")
+
+@RestController
+@RequestMapping("/exam/get")
 
 public class ExamController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
