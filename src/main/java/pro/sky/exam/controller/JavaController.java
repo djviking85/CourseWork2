@@ -6,8 +6,10 @@ import pro.sky.exam.model.Question;
 import pro.sky.exam.service.JavaQuestionServiceImpl;
 import pro.sky.exam.service.QuestionService;
 
+import java.util.Collection;
+
 @RestController
-@RequestMapping("/exam")
+@RequestMapping("/exam/java")
 public class JavaController {
 
     private final QuestionService questionService;
@@ -23,7 +25,7 @@ public class JavaController {
         return "Добро пожаловать в списки вопросов!";
     }
 
-    @GetMapping(path = "/java/add")
+    @GetMapping(path = "/add")
     public Question addQuestion (@RequestParam("question") String question,
                                  @RequestParam("answer") String answer) {
         return questionService.add(question, answer);
@@ -32,14 +34,14 @@ public class JavaController {
 //        return "Добро пожаловать в добавление вопросов!";
 //    }
 
-//    @GetMapping(path = "/java/find")
+//    @GetMapping(path = "/java/find") - нам это не надо
 //    public Question findQuestion () {
 //        return questionService.find;
 //    }
-    public String hello2() {
-        return "Добро пожаловать в поиски вопросов!";
-    }
-    @GetMapping(path = "/java/remove")
+//    public String hello2() {
+//        return "Добро пожаловать в поиски вопросов!";
+//    }
+    @GetMapping(path = "/remove")
     public Question removeQuestion (String question, String answer) {
         return questionService.remove(question, answer);
     }
@@ -47,5 +49,9 @@ public class JavaController {
 //        return "Добро пожаловать в удаление вопросов!";
 //    }
 //    @PathVariable - почитать для эмоунт
+    @GetMapping("/getAll")
+    public Collection<Question> getAll() {
+        return questionService.getall();
+    }
 
 }

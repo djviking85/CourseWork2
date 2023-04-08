@@ -14,12 +14,12 @@ public class JavaQuestionServiceImpl implements QuestionService {
 //        this.random = random;
 //    }
 //
-//    private final Random random;
+    private final Random random;
 //    private final Random random;
 //
-//    public JavaQuestionServiceImpl(Random random) {
-//        this.random = random;
-//    }
+    public JavaQuestionServiceImpl(Random random) {
+        this.random = random;
+ }
 //    public static List<Question> questions = new ArrayList<>();
 //static {
 //    Question q1 = new Question("Как вас зовут?", " Меня зовут Саша.");
