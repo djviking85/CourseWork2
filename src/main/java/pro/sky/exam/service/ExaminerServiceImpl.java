@@ -1,8 +1,21 @@
 package pro.sky.exam.service;
 
 import org.springframework.stereotype.Service;
+import pro.sky.exam.model.Question;
 
-//@Service
+import java.util.Collection;
 
-//public class ExaminerServiceImpl implements QuestionService {
-//}
+@Service
+
+public class ExaminerServiceImpl implements ExaminerService {
+    private final QuestionService questionService;
+
+    public ExaminerServiceImpl(QuestionService questionService) {
+        this.questionService = questionService;
+    }
+
+    @Override
+    public Collection<Question> getQuestioms() {
+        return null;
+    }
+}
