@@ -1,5 +1,6 @@
 package pro.sky.exam.service;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import pro.sky.exam.model.Question;
 
@@ -7,19 +8,17 @@ import java.util.*;
 
 @Service
 
-public class JavaQuestionServiceImpl implements QuestionService {
-    private Set<Question> questions = new HashSet<>();
 
-//    public JavaQuestionServiceImpl(Random random) {
-//        this.random = random;
-//    }
-//
+public class JavaQuestionServiceImpl implements QuestionService {
+
+
+
     private final Random random;
-//    private final Random random;
-//
+
     public JavaQuestionServiceImpl(Random random) {
         this.random = random;
  }
+// оставил для статика - спецом не удаляю
 //    public static List<Question> questions = new ArrayList<>();
 //static {
 //    Question q1 = new Question("Как вас зовут?", " Меня зовут Саша.");
@@ -33,41 +32,15 @@ public class JavaQuestionServiceImpl implements QuestionService {
 //    questions.add(q4);
 //
 //}
-//// делаем мапу - те. по уникальному номеру вопроса - будем делать вопрос - ответ
-//    private final Map<Integer, Question> questionByHashCode = new HashMap<>();
-//// делоем метод на  значение вопроса
-//    // ОСТАНОВИЛСЯ ТУТ
-//    private int getQuestionKey(String question, String answer) {
-//        return Objects.hash(question, answer);
-//    // делаем адд
-////    @Override
-//    public String add(String question, String answer) {
-//        Question question1 = new Question(question, answer);
-//
-//        return String.valueOf(question1);
-//    }
-//
-//
-////    @Override
-//
-//    public Question find(String firstName, String lastName) {
-////        int questionByHashCode = getEmployeeKey(firstName, lastName);
-////        checksNameAndSurname(firstName, lastName);
-//
-//        Question question = questionByHashCode.get(Integer number);
-//
-////        if (employee == null) {
-////            throw new EmployeeNotFoundException(" при поиске сотрудник не найден.");
-////        }
-//        return questions;
-//    }
-//}
+    private Set<Question> questions = new HashSet<>();
+
 
     @Override
     public Question add(String question, String answer) {
         Question newQuestion = new Question(question, answer);
+        questions.add(newQuestion);
 
-        return add(newQuestion);
+        return newQuestion;
     }
 
     @Override
@@ -75,7 +48,7 @@ public class JavaQuestionServiceImpl implements QuestionService {
         questions.add(question);
         return question;
     }
-// correct rem
+
     @Override
     public Question remove(String question, String answer) {
         Question forDelete = new Question(question, answer);

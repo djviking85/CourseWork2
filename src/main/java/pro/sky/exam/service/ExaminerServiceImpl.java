@@ -17,10 +17,7 @@ public class ExaminerServiceImpl implements ExaminerService {
         this.questionService = questionService;
     }
 
-//    @Override
-//    public Collection<Question> getQuestions() {
-//        return null;
-//    }
+
 
     @Override
     public Collection<Question> getQuestions(int amount) {

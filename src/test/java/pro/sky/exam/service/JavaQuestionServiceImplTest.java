@@ -4,12 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pro.sky.exam.model.Question;
 
 
+import java.util.Collection;
 import java.util.Random;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -21,39 +24,45 @@ import static org.mockito.Mockito.when;
 @ExtendWith(SpringExtension.class)
 
 class JavaQuestionServiceImplTest {
-//    @Autowired
-   private JavaQuestionServiceImpl questionService;
-    Question mockQuestion = mock(Question.class);
-    Question mockQuestion1 = mock(Question.class);
+    @Autowired
+    private JavaQuestionServiceImpl javaQuestionService;
+// поудалял левый код
+//    все равно пишет Failed to load ApplicationContext в ошибки теста, не понимаю почему, помогите.
     @Test
     void testAdd() {
-        Question question = new Question("Question", "Answer");
-        questionService.add("Question", "Answer");
-        assertEquals(question, questionService.getall().size());
+        String question = "question";
+        String answer = "answer";
+        Question expectedQuestion = new Question(question, answer);
+        Question actualQuestion = javaQuestionService.add("question", "answer");
+        assertEquals(expectedQuestion, actualQuestion);
+    }
+    @Test
+    void remove_success() {
+        String question = "question";
+        String answer = "answer";
+
+        Question expectedQuestion = new Question(question, answer);
+
+        Question actualQuestion = javaQuestionService.remove(question, answer);
+
+        assertEquals(expectedQuestion, actualQuestion);
     }
 
-    //    test add
-//    @Test
-//    void testAdd() {
-////        set
-//        Question question = new Question("Question", "Answer");
-//
-////        Question expectedQuestion = question;
-////        ready
-//        Question actualQuestion = questionService.add("Question", "Answer");
-////        go
-//        when(javaQuestionService.add(any())).thenReturn(question);
-//        assertEquals(expectedQuestion,actualQuestion);
-//
-////        when(javaQuestionService.add(any())).thenReturn(question);
-////        assertEquals(question, javaQuestionService.add("Question", "Answer"));
-//    }
-//    @Test
-//    void testAdd1() {
-//        JavaQuestionServiceImpl javaQuestionService = new JavaQuestionServiceImpl("Question", "Answer");
-//        javaQuestionService.add("Question", "Answer");
-//        assertEquals(1, javaQuestionService.getall().size());
-//    }
+    @Test
+    void getAll() {
+        Question q1 = new Question("question1", "answer1");
+        Question q2 = new Question("question2", "answer2");
+        Collection<Question> questions = Set.of(q1, q2);
+
+        Collection<Question> expectedQuestions = questions;
+
+        Collection<Question> actualQuestions = javaQuestionService.getall();
+
+        assertEquals(expectedQuestions, actualQuestions);
+    }
+
+
+
 }
 
 
