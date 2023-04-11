@@ -13,11 +13,7 @@ public class JavaQuestionServiceImpl implements QuestionService {
 
 
 
-    private final Random random;
 
-    public JavaQuestionServiceImpl(Random random) {
-        this.random = random;
- }
 // оставил для статика - спецом не удаляю
 //    public static List<Question> questions = new ArrayList<>();
 //static {

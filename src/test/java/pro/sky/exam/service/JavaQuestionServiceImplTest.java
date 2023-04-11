@@ -25,9 +25,8 @@ import static org.mockito.Mockito.when;
 
 class JavaQuestionServiceImplTest {
     @Autowired
-    private JavaQuestionServiceImpl javaQuestionService;
-// поудалял левый код
-//    все равно пишет Failed to load ApplicationContext в ошибки теста, не понимаю почему, помогите.
+    private QuestionService javaQuestionService;
+
     @Test
     void testAdd() {
         String question = "question";
@@ -49,19 +48,19 @@ class JavaQuestionServiceImplTest {
     }
 
     @Test
-    void getAll() {
+    void getAll_success() {
         Question q1 = new Question("question1", "answer1");
         Question q2 = new Question("question2", "answer2");
-        Collection<Question> questions = Set.of(q1, q2);
+        Collection<Question> questions = Set.of(q1,q2);
 
         Collection<Question> expectedQuestions = questions;
+        javaQuestionService.add(q1);
+        javaQuestionService.add(q2);
 
         Collection<Question> actualQuestions = javaQuestionService.getall();
 
         assertEquals(expectedQuestions, actualQuestions);
     }
-
-
 
 }
 
